@@ -12,3 +12,9 @@
 
 <script setup lang="ts">
 </script>
+
+<style lang="scss" scoped>
+.q-header {
+  padding: 8px 16px;
+}
+</style>

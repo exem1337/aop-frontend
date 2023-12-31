@@ -1,5 +1,6 @@
 import { route } from 'quasar/wrappers';
 import {
+  Router,
   createMemoryHistory,
   createRouter,
   createWebHashHistory,
