@@ -9,6 +9,15 @@
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js
 
 const { configure } = require('quasar/wrappers');
+const Dotenv = require('dotenv');
+
+function getEnvVars() {
+  const env = Dotenv.config().parsed || {};
+  return Object.keys(env).reduce((acc, key) => {
+    acc[`process.env.${key}`] = JSON.stringify(env[key]);
+    return acc;
+  }, {});
+}
 
 module.exports = configure(function (/* ctx */) {
   return {
@@ -52,7 +61,13 @@ module.exports = configure(function (/* ctx */) {
         browser: ['es2019', 'edge88', 'firefox78', 'chrome87', 'safari13.1'],
         node: 'node16',
       },
-
+      extendWebpack(cfg) {
+        cfg.plugin('define').tap((args) => {
+          const env = getEnvVars();
+          args[0]['process.env'] = { ...args[0]['process.env'], ...env };
+          return args;
+        });
+      },
       vueRouterMode: 'hash', // available values: 'hash', 'history'
       // vueRouterBase,
       // vueDevtools,
