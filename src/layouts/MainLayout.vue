@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
-      AOP
+      <span>Aдаптивный обучающий портал</span>
     </q-header>
 
     <q-page-container>
@@ -15,6 +15,11 @@
 
 <style lang="scss" scoped>
 .q-header {
-  padding: 8px 16px;
+  padding: 16px 32px;
+
+  span {
+    cursor: pointer;
+    font-size: 1.5em;
+  }
 }
 </style>

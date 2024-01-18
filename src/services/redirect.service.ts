@@ -5,15 +5,13 @@ export class RedirectService {
 
   constructor(router: Router) {
     this.router = router;
-    console.log('constructor', this.router)
   }
 
-  public toExpertMain(): void {
+  public toExpertMain = (): void => {
     this.router.push('/admin');
   }
 
-  public toDisciplines(): void {
-    console.log('toDisciplines', this.router)
+  public toDisciplines = (): void => {
     this.router.push('/disciplines');
   }
 }

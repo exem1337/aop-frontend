@@ -28,9 +28,15 @@ import BaseWrapper from 'src/components/BaseWrapper.vue';
 import BigCard from 'src/components/BigCard.vue';
 import { RedirectService } from '../services/redirect.service';
 import { useRouter } from 'vue-router';
+import { onMounted } from 'vue';
+import api from '../services/api.service'
 
 const router = useRouter();
 const redirectService = new RedirectService(router);
+
+onMounted(async () => {
+  const res = await api.get('/predict/model_info/', { showError: true })
+});
 </script>
 
 <style lang="scss" scoped>

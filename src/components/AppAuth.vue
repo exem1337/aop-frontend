@@ -18,6 +18,7 @@
         />
         <q-btn 
           :loading="isLoading.getIsActive"
+          :disable="!email || !password"
           @click="onLogin"
         >
           Войти
